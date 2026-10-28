@@ -17,20 +17,20 @@
 识别后，每行内容都可以修改，也可以单独勾选需要恢复的行。展开“对照 / 更换字体”，可查看原稿与候选字形：**上方为原稿，下方为候选**，并可手动选择本机字体。字体候选需要人工核对。
 
 <p>
-  <img src="docs/images/recognize.png" alt="字醒识别结果：三行文字可分别校对并选择字体" width="340">
-  <img src="docs/images/font-compare.png" alt="字形对照：上方是原稿，下方是候选字体，可展开更换字体" width="340">
+  <img src="docs/images/recognize.jpg" alt="字醒识别结果：三行文字可分别校对并选择字体" width="340">
+  <img src="docs/images/font-compare.jpg" alt="字形对照：上方是原稿，下方是候选字体，可展开更换字体" width="340">
 </p>
 
 ### 恢复可编辑文字，合并多个文本框
 
 恢复后，文字可以继续编辑和更换字体。选中多个可编辑文本框后，点击“合并选中文本”，会按位置合并并保留换行与字符样式；原文本会隐藏保留。下图为演示中三个恢复后的文本框合并成一个对象的结果，三行使用不同字体。
 
-<img src="docs/images/editable-result.png" alt="Illustrator 中合并后的单个可编辑文本对象，三行仍保留各自的字体" width="960">
+<img src="docs/images/editable-result.jpg" alt="Illustrator 中合并后的单个可编辑文本对象，三行仍保留各自的字体" width="960">
 
 <details>
 <summary>查看文本合并完成提示</summary>
 
-<p><img src="docs/images/merge-text.png" alt="字醒提示：已将三个文本框合并为一个，原文本已隐藏保留" width="340"></p>
+<p><img src="docs/images/merge-text.jpg" alt="字醒提示：已将三个文本框合并为一个，原文本已隐藏保留" width="340"></p>
 </details>
 
 ## 下载

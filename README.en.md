@@ -17,20 +17,20 @@ These are actual screenshots of **the macOS native version 2.0.0 in Illustrator 
 After recognition, you can edit each line and choose which lines to restore. Expand **对照 / 更换字体** (Compare / Change font) to see the **original on top and the candidate below**, or choose another installed font. Always review the candidate against the original.
 
 <p>
-  <img src="docs/images/recognize.png" alt="Recognition results with three independently editable lines and their font candidates" width="340">
-  <img src="docs/images/font-compare.png" alt="Font comparison showing the original above the candidate, with controls to change the font" width="340">
+  <img src="docs/images/recognize.jpg" alt="Recognition results with three independently editable lines and their font candidates" width="340">
+  <img src="docs/images/font-compare.jpg" alt="Font comparison showing the original above the candidate, with controls to change the font" width="340">
 </p>
 
 ### Restore editable text and merge text frames
 
 Restored text can be edited and assigned another font. Select multiple editable text frames and click **合并选中文本** (Merge selected text) to combine them by position while retaining line breaks and character styles. Original frames are hidden and retained. The sample below shows three restored frames merged into one editable object, with different fonts on the three lines.
 
-<img src="docs/images/editable-result.png" alt="One merged, editable text object in Illustrator containing three lines with different fonts" width="960">
+<img src="docs/images/editable-result.jpg" alt="One merged, editable text object in Illustrator containing three lines with different fonts" width="960">
 
 <details>
 <summary>Show the merge confirmation</summary>
 
-<p><img src="docs/images/merge-text.png" alt="ZiXing confirms that three text frames were merged into one and the originals were hidden and retained" width="340"></p>
+<p><img src="docs/images/merge-text.jpg" alt="ZiXing confirms that three text frames were merged into one and the originals were hidden and retained" width="340"></p>
 </details>
 
 ## Downloads
