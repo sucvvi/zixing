@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest Version="7.0" ExtensionBundleId="cool.suba.textrevive" ExtensionBundleVersion="1.3.0" ExtensionBundleName="字醒">
+  <ExtensionList><Extension Id="cool.suba.textrevive.panel" Version="1.3.0"/></ExtensionList>
+  <ExecutionEnvironment>
+    <HostList><Host Name="ILST" Version="[29.5.1,30.99]"/></HostList>
+    <LocaleList><Locale Code="All"/></LocaleList>
+    <RequiredRuntimeList><RequiredRuntime Name="CSXS" Version="12.0"/></RequiredRuntimeList>
+  </ExecutionEnvironment>
+  <DispatchInfoList><Extension Id="cool.suba.textrevive.panel"><DispatchInfo>
+    <Resources><MainPath>./index.html</MainPath><ScriptPath>./host/main.jsx</ScriptPath><CEFCommandLine><Parameter>--enable-nodejs</Parameter></CEFCommandLine></Resources>
+    <Lifecycle><AutoVisible>true</AutoVisible></Lifecycle>
+    <UI><Type>Panel</Type><Menu>字醒</Menu><Geometry><Size><Width>380</Width><Height>690</Height></Size><MinSize><Width>320</Width><Height>450</Height></MinSize></Geometry></UI>
+  </DispatchInfo></Extension></DispatchInfoList>
+</ExtensionManifest>

@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+**/build/
+**/bin/
+**/obj/
+发布/
+*.ai
+*.dmg
+*.zip
+windows/resources/web/ocr/

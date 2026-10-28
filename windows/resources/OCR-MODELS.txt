@@ -1,0 +1,2 @@
+tessdata_fast commit 87416418657359cb625c412a48b6e1d6d41c29bd
+Apache-2.0

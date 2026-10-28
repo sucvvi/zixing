@@ -1,0 +1,6 @@
+Tesseract.js 5.1.1 / Tesseract.js-core 5.1.1: Apache-2.0.
+Includes Leptonica (BSD-style license) through Tesseract core.
+Tessdata_fast (eng / chi_sim / chi_tra): Apache-2.0; commit in OCR-MODELS.txt.
+Microsoft.Web.WebView2 1.0.4314.35: see WebView2-LICENSE.txt.
+Native bootstrap statically links LLVM libc++ / libc++abi / libunwind (Apache-2.0 WITH LLVM-exception), MinGW-w64 runtime (per component permissive licenses); toolchain licenses are included with this test build.
+Adobe SDK is separately obtained and is not included.

@@ -1,0 +1,52 @@
+{
+  "environment": "macOS Chromium, bundled Windows OCR resources; image transport fixture only; no Windows Illustrator",
+  "height": 1080,
+  "languages": [
+    "chi_sim",
+    "chi_tra",
+    "eng"
+  ],
+  "lines": [
+    {
+      "alternatives": [],
+      "angle": 0,
+      "confidence": 0.4495366668701172,
+      "height": 0.2240740740740741,
+      "method": "tesseract-lstm",
+      "ocrAgreed": false,
+      "stable": false,
+      "text": "Fe HA SCF VRS Min",
+      "width": 0.9703529411764706,
+      "x": 0.016,
+      "y": 0.7481481481481482
+    },
+    {
+      "alternatives": [],
+      "angle": 0,
+      "confidence": 0.9393299865722656,
+      "height": 0.18055555555555555,
+      "method": "tesseract-lstm",
+      "ocrAgreed": false,
+      "stable": true,
+      "text": "Editable Type 2026",
+      "width": 0.8865882352941177,
+      "x": 0.01835294117647059,
+      "y": 0.3574074074074074
+    },
+    {
+      "alternatives": [],
+      "angle": 0,
+      "confidence": 0.9530692291259766,
+      "height": 0.13796296296296295,
+      "method": "tesseract-lstm",
+      "ocrAgreed": false,
+      "stable": true,
+      "text": "修改字体 ABC 123",
+      "width": 0.6207058823529412,
+      "x": 0.01411764705882353,
+      "y": 0.026851851851851904
+    }
+  ],
+  "ok": true,
+  "width": 2125
+}

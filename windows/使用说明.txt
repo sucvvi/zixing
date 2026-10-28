@@ -1,0 +1,48 @@
+字醒 · Windows 原生测试版 2.1.0-beta1
+
+【先看这条】
+这是 Windows x64 测试包，已完成编译、包结构检查、算法与传输测试，并用打包的离线 OCR 资源进行了浏览器验证。
+目前没有 Windows 电脑，尚未在 Windows Illustrator 中验证能否加载及完成操作。请先在测试稿副本上试用，不要当作正式稳定版直接用于生产稿。
+
+【适用范围】
+兼容目标：Windows 10/11 64 位，Illustrator 2020–2026。
+上述范围是开发目标，尚未逐版实测；2020 之前版本暂不支持，Windows ARM64 暂不支持。
+需要：Microsoft .NET Framework 4.8、Microsoft Edge WebView2 Evergreen Runtime。
+如果电脑缺少运行库，请从微软官网下载，插件不会自动安装：
+https://dotnet.microsoft.com/download/dotnet-framework/net48
+https://developer.microsoft.com/microsoft-edge/webview2/
+
+【安装】
+1. 退出 Illustrator。
+2. 解压分享包。只把“字醒.aip”复制到对应 Illustrator 安装目录的 Plug-ins（增效工具）文件夹。
+   常见位置：C:\Program Files\Adobe\Adobe Illustrator 2026\Plug-ins\
+   实际路径以你的安装位置为准。可能需要管理员权限。
+3. 启动 Illustrator，从“窗口 → 字醒”打开。
+   本版是独立浮动窗口，暂不能停靠到 Illustrator 侧边栏。
+4. 使用旧版本测试时，把同一个 Windows .aip 放进该版本的增效工具文件夹；这不代表已通过该版本验证。
+
+【使用】
+恢复：选中转曲文字 → 识别选中文字 → 校对文字 → 比较、选择字体 → 恢复为可编辑文字。
+比较进度在顶部显示；比较未结束前，不要将候选为空理解为匹配失败。
+合并：选中两个或多个可编辑文本框 → 合并选中文本。按位置排列，保留字符样式；不支持沿路径文字等复杂情况。
+恢复和合并默认保留原对象。第一次测试请使用附带样稿，并检查排列、字体、换行及撤销结果。
+
+【识别限制】
+Windows 版改用本地 Tesseract OCR，不保证与 Mac 版有相同识别效果。普通中英文测试行可以识别，艺术字、篆体等可能明显误读，需手动改正后再匹配。
+只能比较本机已安装且系统可读取的字体；找不到原字体时只能给相似候选，不能承诺找回原字体。
+本测试版主要面向水平文字。倾斜、变形、竖排、复杂多栏请拆分选区并逐行核对。
+
+【遇到问题】
+没有“字醒”菜单：确认使用 Windows 文件、64 位 Illustrator、安装位置正确，并重启。移出 .aip 后可回到未安装状态。
+面板无法打开：检查 .NET Framework 4.8、WebView2 Runtime 是否完整安装，并保留错误信息。
+同时开着多个 Illustrator 版本：先只保留要测试的一个版本，再打开字醒。
+被 Windows 或安全软件拦截：本测试包没有商业数字签名。不要为运行插件关闭安全软件；先核对来源和 SHA256，按所在单位的安全流程处理。
+反馈请附：Windows 版本、Illustrator 完整版本号、错误提示、发生步骤；如需稿件，只提供可分享的测试内容。
+
+【卸载】
+退出 Illustrator，移出 Plug-ins 文件夹中的“字醒.aip”即可。
+如需清理本地缓存，可在退出所有字醒窗口后手动删除 %LOCALAPPDATA%\ZiXing。
+本包不需要 CEP，不会修改 CEP 未签名扩展加载设置，也不会改动 Mac 版。
+
+【分享】
+可以分享整个 Windows 测试 ZIP。请保留“测试版”标记、使用说明、测试清单和第三方许可；不要宣传为已经在 Windows 实机验证的正式版。

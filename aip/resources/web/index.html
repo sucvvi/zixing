@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; connect-src 'none'"><title>字醒</title><link rel="stylesheet" href="style.css"></head><body><main>
+<header><h1>字醒</h1><span>本机处理</span></header>
+<div class="activity"><p id="status" role="status" aria-live="polite">连接 Illustrator…</p><progress id="matchProgress" max="100" value="0" aria-label="字体比较进度" hidden></progress></div>
+<p class="intro">选中转曲文字，校对后恢复。</p>
+<datalist id="fontList"></datalist>
+<button id="capture" class="primary" disabled>识别选中文字</button>
+<section id="review" hidden><div class="toolbar"><b id="count"></b><button id="matchFonts" class="link" disabled>匹配字体</button></div><div id="lines"></div></section>
+<button id="rebuild" class="primary" disabled>恢复为可编辑文字</button>
+<button id="mergeText" class="secondary" disabled>合并选中文本</button>
+<p class="hint merge-hint">选中多个可编辑文本框，按位置合并并保留换行。</p>
+<details class="settings"><summary>更多选项</summary><label>语言 <select id="language"><option value="zh">中文 + English</option><option value="en">English</option></select></label><label class="check"><input id="hideOriginals" type="checkbox" checked>恢复后隐藏原转曲对象</label><p class="hint">原对象始终保留。只恢复部分行时，原稿保持可见。</p><button id="reloadFonts" class="link" disabled>刷新本机字体</button><p class="hint">普通 OCR 不一定能读懂篆体、碑体。低把握结果需校对；字体候选不等于原字体确认。</p></details>
+<footer id="version">v2.0.0 · 原生版</footer>
+</main><script src="js/core.js"></script><script src="js/native-runtime.js"></script><script src="js/panel.js"></script></body></html>
