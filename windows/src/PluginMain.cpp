@@ -15,6 +15,7 @@ static HMODULE module;
 static PROCESS_INFORMATION panel;
 struct State {ZXBasic* basic;ZXMenu* menu;ZXAccess* access;void* resident;void* item;};
 static State state;
+static char menuLabel[64]="ZiXing";
 static const wchar_t version[]=L"2.1.0-beta3";
 static bool Append(wchar_t* target,DWORD capacity,const wchar_t* suffix){DWORD a=lstrlenW(target),b=lstrlenW(suffix);if(a+b>=capacity)return false;for(DWORD i=0;i<=b;i++)target[a+i]=suffix[i];return true;}
 static bool UserDirectory(wchar_t* out){if(FAILED(SHGetFolderPathW(nullptr,CSIDL_LOCAL_APPDATA,nullptr,SHGFP_TYPE_CURRENT,out)))return false;if(!Append(out,MAX_PATH,L"\\ZiXing"))return false;return CreateDirectoryW(out,nullptr)||GetLastError()==ERROR_ALREADY_EXISTS;}
@@ -72,7 +73,12 @@ extern "C" __declspec(dllexport) ZXError PluginMain(char* caller,char* selector,
   if(!state.menu||!state.menu->AddZString||!state.access||!state.access->AcquirePlugin){Log("missing-suite-function",0x5041524d);return 0x5041524d;}
   // The host owns ZString construction. Do not request the old UnicodeString
   // suite, instantiate Adobe C++ strings, or do any OCR/panel work at startup.
-  error=state.menu->AddZString(data->self,"ZiXing.Windows.Panel","Tool Palettes",(const void*)"ZiXing",3,&state.item);Log("register-menu",error);if(error)return error;
+  // ZString accepts the Windows system encoding, not necessarily UTF-8.
+  // Use it only when the Chinese name is exactly representable; otherwise
+  // retain the ASCII fallback and apply the native UTF-16 label below.
+  BOOL substituted=FALSE;UINT page=GetACP();int encoded=WideCharToMultiByte(page,page==CP_UTF8?0:WC_NO_BEST_FIT_CHARS,L"\u5b57\u9192",-1,menuLabel,sizeof(menuLabel),nullptr,page==CP_UTF8?nullptr:&substituted);
+  if(!encoded||substituted)lstrcpynA(menuLabel,"ZiXing",sizeof(menuLabel));
+  error=state.menu->AddZString(data->self,"ZiXing.Windows.Panel","Tool Palettes",(const void*)menuLabel,3,&state.item);Log("register-menu",error);if(error)return error;
   UpdateMenuLabel();
   error=state.access->AcquirePlugin(data->self,&state.resident);Log("pin-plugin",error);if(error)return error;
   Log("startup-ready",0);return 0;

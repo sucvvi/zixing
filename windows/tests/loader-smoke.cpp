@@ -6,7 +6,8 @@
 static int registered=0,pinned=0,unicodeRequests=0;
 static HMENU nativeMenu;
 static ZXError Add(void*,const char*,const char* group,const void* label,int32_t flags,void** item){
- if(strcmp(group,"Tool Palettes")||strcmp((const char*)label,"ZiXing")||flags!=3)return 101;
+ wchar_t decoded[64];if(!MultiByteToWideChar(CP_ACP,0,(const char*)label,-1,decoded,64))return 101;
+ if(strcmp(group,"Tool Palettes")||(lstrcmpW(decoded,L"ZiXing")&&lstrcmpW(decoded,L"\u5b57\u9192"))||flags!=3)return 101;
  nativeMenu=CreatePopupMenu();AppendMenuW(nativeMenu,MF_STRING,100,L"Other plugin");AppendMenuW(nativeMenu,MF_STRING,200,L"ZiXing");
  *item=(void*)0x1234;registered++;return 0;
 }

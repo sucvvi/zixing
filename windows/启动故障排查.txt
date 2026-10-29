@@ -1,4 +1,4 @@
-字醒 Windows beta2 启动故障排查
+字醒 Windows beta3 启动故障排查
 
 本版针对 beta1 在 Illustrator 启动阶段被列为“检测到插件问题”的反馈调整加载方式。
 移除了启动阶段对旧版 AI Unicode String Suite、SP Blocks Suite 和 Adobe C++ 字符串对象的依赖。
