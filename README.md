@@ -35,14 +35,14 @@
 
 ## 下载
 
-**Windows 启动反馈：** beta1 已收到 Illustrator 启动时拒绝加载的反馈，暂不推荐安装。beta2 已简化启动接口，并通过 [Windows 构建及加载检查](https://github.com/sucvvi/zixing/actions/runs/40814646149)。请从 [beta2 发布页](https://github.com/sucvvi/zixing/releases/tag/v2.1.0-beta2-windows) 下载复测；真实 Illustrator 仍待确认。
+**Windows 测试状态：** beta2 已有用户确认可正常启动。beta3 修订中文菜单编码和字体候选比较，并通过 [Windows 加载、菜单与字体回归](https://github.com/sucvvi/zixing/actions/runs/40827243277)。请下载 beta3 测试版复测实际稿件；20 组系统字体 / 字距样例的首选命中数由 17 提升到 20，这个小样本不代表通用准确率。
 
 请从 [Releases](https://github.com/sucvvi/zixing/releases) 下载对应系统的安装包，源码 ZIP 不能直接安装。
 
 | 版本 | 适用范围与验证状态 | 下载 |
 | --- | --- | --- |
 | macOS 2.0.0 | macOS 13+，Universal arm64 / x86_64；已在 Apple Silicon、Illustrator 2026 30.8.2 实测识别、恢复与合并；其他机器和 Intel Mac 未实测 | [Mac 安装包](https://github.com/sucvvi/zixing/releases/tag/v2.0.0-macos) |
-| Windows 2.1.0-beta2 | Windows 10/11 x64；以 Illustrator 2020–2026 为兼容目标；**尚未在 Windows Illustrator 实机验证** | [Windows 测试包](https://github.com/sucvvi/zixing/releases/tag/v2.1.0-beta2-windows) |
+| Windows 2.1.0-beta3 | Windows 10/11 x64；以 Illustrator 2020–2026 为兼容目标；**beta3 真实稿件复测待完成，未逐版验证 Illustrator 兼容性** | [Windows 测试包](https://github.com/sucvvi/zixing/releases/tag/v2.1.0-beta3-windows) |
 
 Mac 包采用本地 ad-hoc 签名，尚未 Developer ID 签名或公证，下载后可能受 Gatekeeper 限制。Windows 包未商业签名，仍是供实机验证的测试版。不要为运行插件关闭安全软件；先在测试稿副本中使用。
 

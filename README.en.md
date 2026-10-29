@@ -35,14 +35,14 @@ Restored text can be edited and assigned another font. Select multiple editable 
 
 ## Downloads
 
-**Windows startup issue:** beta1 has a reported Illustrator startup rejection and is not currently recommended. beta2 simplifies startup registration and has passed [Windows build and loader checks](https://github.com/sucvvi/zixing/actions/runs/40814646149). Download the [beta2 test release](https://github.com/sucvvi/zixing/releases/tag/v2.1.0-beta2-windows) to retest. Real Illustrator verification is still pending.
+**Windows testing status:** a user confirmed beta2 can launch. beta3 addresses the Chinese menu label and font matching, and passed [Windows loader, native-menu and font regressions](https://github.com/sucvvi/zixing/actions/runs/40827243277). Top-choice hits improved from 17 to 20 in a small 20-case system-font / tracking set; this is not a general accuracy estimate. Real-document verification of beta3 is still pending.
 
 Download the installer for your operating system from [Releases](https://github.com/sucvvi/zixing/releases). The automatically generated source ZIP is not an installable plugin.
 
 | Release | Compatibility target and verification status | Download |
 | --- | --- | --- |
 | macOS 2.0.0 | macOS 13+, Universal arm64 / x86_64. Recognition, recovery, and merging tested on Apple Silicon with Illustrator 2026 30.8.2. Other machines and Intel Macs have not been tested. | [Mac package](https://github.com/sucvvi/zixing/releases/tag/v2.0.0-macos) |
-| Windows 2.1.0-beta2 | Windows 10/11 x64, targeting Illustrator 2020–2026. **Not yet tested in Windows Illustrator.** | [Windows test package](https://github.com/sucvvi/zixing/releases/tag/v2.1.0-beta2-windows) |
+| Windows 2.1.0-beta3 | Windows 10/11 x64, targeting Illustrator 2020–2026. **Real-document verification of beta3 and per-version Illustrator compatibility checks are still pending.** | [Windows test package](https://github.com/sucvvi/zixing/releases/tag/v2.1.0-beta3-windows) |
 
 The Mac package has a local ad-hoc signature and has not been Developer ID signed or notarized; Gatekeeper may restrict it after download. The Windows package has no commercial digital signature and remains a test build. Keep your security protections enabled and try the plugin on a disposable document copy first.
 
