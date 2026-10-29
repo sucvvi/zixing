@@ -17,9 +17,12 @@ struct ZXMessage {
     ZXBasic* basic;
 };
 struct ZXMenuMessage { ZXMessage data; void* item; };
+struct ZXPlatformMenu { void* menu; int16_t item; };
 struct ZXMenu {
     void* unusedAddUnicode;
     ZXError (*AddZString)(void*, const char*, const char*, const void*, int32_t, void**);
+    void* unusedSlots2Through7[6];
+    ZXError (*GetPlatformItem)(void*, ZXPlatformMenu*);
 };
 struct ZXAccess { ZXError (*AcquirePlugin)(void*, void**); };
 static_assert(sizeof(void*) == 8, "ZiXing requires Windows x64");

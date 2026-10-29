@@ -1,6 +1,6 @@
 from pathlib import Path
 import hashlib,json,struct,zipfile
-VERSION='2.1.0-beta2'
+VERSION='2.1.0-beta3'
 ROOT=Path(__file__).resolve().parents[2]
 BUILD=ROOT/'windows/build'
 def payload(web):
@@ -23,7 +23,7 @@ def resources():
  for key,value in props:
   value+=bytes((-len(value))%4);data+=b'ADBE'+key+struct.pack('>II',0,len(value))+value
  (BUILD/'plugin.pipl').write_bytes(data)
- (BUILD/'plugin.rc').write_text('#include <windows.h>\nplugin pipl "plugin.pipl"\n101 RCDATA "ZiXingPanel.exe"\n1 VERSIONINFO\nFILEVERSION 2,1,0,2\nPRODUCTVERSION 2,1,0,2\nFILEOS VOS_NT_WINDOWS32\nFILETYPE VFT_DLL\nBEGIN\n BLOCK "StringFileInfo"\n BEGIN\n  BLOCK "040904b0"\n  BEGIN\n   VALUE "FileDescription", "ZiXing Windows native test plug-in\\0"\n   VALUE "FileVersion", "'+VERSION+'\\0"\n  END\n END\nEND\n')
+ (BUILD/'plugin.rc').write_text('#include <windows.h>\nplugin pipl "plugin.pipl"\n101 RCDATA "ZiXingPanel.exe"\n1 VERSIONINFO\nFILEVERSION 2,1,0,3\nPRODUCTVERSION 2,1,0,3\nFILEOS VOS_NT_WINDOWS32\nFILETYPE VFT_DLL\nBEGIN\n BLOCK "StringFileInfo"\n BEGIN\n  BLOCK "040904b0"\n  BEGIN\n   VALUE "FileDescription", "ZiXing Windows native test plug-in\\0"\n   VALUE "FileVersion", "'+VERSION+'\\0"\n  END\n END\nEND\n')
 def manifest(files,compiler,abi_checked):
  data={'version':VERSION,'platform':'Windows x64','compiler':compiler,'sdkAbiChecked':abi_checked,'buildOnly':True,'windowsIllustratorTested':False,'bootstrap':'C-facing menu/access suites; no Unicode suite dependency','assets':{n:hashlib.sha256(p.read_bytes()).hexdigest() for n,p in sorted(files.items())},'aipSHA256':hashlib.sha256((BUILD/'字醒.aip').read_bytes()).hexdigest()}
  (BUILD/'build-manifest.json').write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')

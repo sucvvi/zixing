@@ -11,6 +11,9 @@ static_assert(offsetof(ZXMessage,globals)==offsetof(SPMessageData,globals), "Glo
 static_assert(offsetof(ZXMessage,basic)==offsetof(SPMessageData,basic), "Basic suite pointer differs");
 static_assert(offsetof(ZXMenuMessage,item)==offsetof(AIMenuMessage,menuItem), "Menu message differs");
 static_assert(offsetof(ZXMenu,AddZString)==offsetof(AIMenuSuite,AddMenuItemZString), "Menu prefix differs");
+static_assert(offsetof(ZXMenu,GetPlatformItem)==offsetof(AIMenuSuite,GetPlatformMenuItem), "Platform menu slot differs");
+static_assert(sizeof(ZXPlatformMenu)==sizeof(AIPlatformMenuItem), "Platform menu structure differs");
+static_assert(offsetof(ZXPlatformMenu,item)==offsetof(AIPlatformMenuItem,item), "Platform menu item differs");
 static_assert(offsetof(ZXAccess,AcquirePlugin)==offsetof(SPAccessSuite,AcquirePlugin), "Access prefix differs");
 static_assert(kAIMenuSuiteVersion==11 && kSPAccessSuiteVersion==3, "Recheck suite versions");
 static_assert(kMenuItemAlwaysEnabled==2, "Recheck menu option");

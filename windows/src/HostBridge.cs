@@ -20,7 +20,7 @@ namespace ZiXing {
     string expected=Json.Encode(hostExecutable);
     string script="#targetengine \"zixing-windows\"\n"+
       guard+"\nZiXingCheckHost("+major+","+expected+");\n"+
-      "if(typeof TextReviveWindowsBuild==='undefined'||TextReviveWindowsBuild!=='2.1.0-beta2'){\n"+source+"\nvar TextReviveWindowsBuild='2.1.0-beta2';}\nTextRevive.dispatch("+quoteAction+","+quotePayload+");";
+      "if(typeof TextReviveWindowsBuild==='undefined'||TextReviveWindowsBuild!=='2.1.0-beta3'){\n"+source+"\nvar TextReviveWindowsBuild='2.1.0-beta3';}\nTextRevive.dispatch("+quoteAction+","+quotePayload+");";
     script=script.Replace("\u2028","\\u2028").Replace("\u2029","\\u2029");
     string raw=null;for(int attempt=0;;attempt++){try{raw=(string)app.GetType().InvokeMember("DoJavaScript",BindingFlags.InvokeMethod|BindingFlags.OptionalParamBinding,null,app,new object[]{script,Type.Missing,Type.Missing});break;}catch(TargetInvocationException ex){var com=ex.InnerException as COMException;if(com!=null&&(com.ErrorCode==unchecked((int)0x80010001)||com.ErrorCode==unchecked((int)0x8001010A))&&attempt<5){Thread.Sleep(300);continue;}throw ex.InnerException??ex;}}
     var result=Json.Object(raw);if(!result.ContainsKey("ok")||!(result["ok"] is bool)||!(bool)result["ok"])throw new Exception(Json.String(result,"error")??"Illustrator 文档操作未完成。");completion.SetResult(result.ContainsKey("data")?result["data"]:new object());

@@ -4,7 +4,7 @@ from pathlib import Path
 import hashlib,json,shutil,subprocess,sys,zipfile
 root=Path(__file__).resolve().parents[2]
 subprocess.run([sys.executable,str(root/'windows/tests/verify-package.py')],check=True)
-name='字醒-v2.1.0-beta2-Windows-x64'
+name='字醒-v2.1.0-beta3-Windows-x64'
 release=root/'发布'/name
 release.mkdir(parents=True,exist_ok=True)
 files={

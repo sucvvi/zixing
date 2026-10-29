@@ -15,15 +15,32 @@ static HMODULE module;
 static PROCESS_INFORMATION panel;
 struct State {ZXBasic* basic;ZXMenu* menu;ZXAccess* access;void* resident;void* item;};
 static State state;
-static const wchar_t version[]=L"2.1.0-beta2";
+static const wchar_t version[]=L"2.1.0-beta3";
 static bool Append(wchar_t* target,DWORD capacity,const wchar_t* suffix){DWORD a=lstrlenW(target),b=lstrlenW(suffix);if(a+b>=capacity)return false;for(DWORD i=0;i<=b;i++)target[a+i]=suffix[i];return true;}
 static bool UserDirectory(wchar_t* out){if(FAILED(SHGetFolderPathW(nullptr,CSIDL_LOCAL_APPDATA,nullptr,SHGFP_TYPE_CURRENT,out)))return false;if(!Append(out,MAX_PATH,L"\\ZiXing"))return false;return CreateDirectoryW(out,nullptr)||GetLastError()==ERROR_ALREADY_EXISTS;}
 static void Log(const char* phase,LONG error,bool reset=false){
  wchar_t path[MAX_PATH];if(!UserDirectory(path)||!Append(path,MAX_PATH,L"\\startup.log"))return;
  HANDLE f=CreateFileW(path,FILE_APPEND_DATA,FILE_SHARE_READ|FILE_SHARE_WRITE,nullptr,reset?CREATE_ALWAYS:OPEN_ALWAYS,FILE_ATTRIBUTE_NORMAL,nullptr);if(f==INVALID_HANDLE_VALUE)return;
- SYSTEMTIME t;GetLocalTime(&t);char line[240];int count=wsprintfA(line,"%04u-%02u-%02u %02u:%02u:%02u beta2 %s code=0x%08lX\r\n",t.wYear,t.wMonth,t.wDay,t.wHour,t.wMinute,t.wSecond,phase,(unsigned long)error);DWORD written;WriteFile(f,line,count,&written,nullptr);CloseHandle(f);
+ SYSTEMTIME t;GetLocalTime(&t);char line[240];int count=wsprintfA(line,"%04u-%02u-%02u %02u:%02u:%02u beta3 %s code=0x%08lX\r\n",t.wYear,t.wMonth,t.wDay,t.wHour,t.wMinute,t.wSecond,phase,(unsigned long)error);DWORD written;WriteFile(f,line,count,&written,nullptr);CloseHandle(f);
 }
 static void Notice(const wchar_t* message){MessageBoxW(nullptr,message,L"字醒",MB_OK|MB_ICONERROR);}
+static void UpdateMenuLabel(){
+ // Register with an ASCII fallback, then write the native label as UTF-16.
+ // Never pass UTF-8 Chinese through the host's ANSI ZString decoder.
+ if(!state.menu||!state.menu->GetPlatformItem||!state.item)return;
+ ZXPlatformMenu platform={};ZXError error=state.menu->GetPlatformItem(state.item,&platform);
+ if(error||!platform.menu){Log("menu-label-platform",error);return;}
+ HMENU menu=(HMENU)platform.menu;int count=GetMenuItemCount(menu);
+ for(int i=0;i<count;i++){
+  wchar_t label[80];if(!GetMenuStringW(menu,i,label,80,MF_BYPOSITION))continue;
+  if(lstrcmpW(label,L"\u5b57\u9192")==0)return;
+  wchar_t plain[80];int used=0;for(int c=0;label[c]&&label[c]!=L'\t'&&used<79;c++)if(label[c]!=L'&')plain[used++]=label[c];plain[used]=0;
+  if(lstrcmpW(plain,L"ZiXing")!=0)continue;
+  MENUITEMINFOW info={};info.cbSize=sizeof(info);info.fMask=MIIM_STRING;info.dwTypeData=(LPWSTR)L"\u5b57\u9192";
+  Log("menu-label-utf16",SetMenuItemInfoW(menu,i,TRUE,&info)?0:GetLastError());return;
+ }
+ Log("menu-label-fallback",0);
+}
 static BOOL CALLBACK RaisePanel(HWND window,LPARAM pid){DWORD actual=0;GetWindowThreadProcessId(window,&actual);if(actual==(DWORD)pid&&IsWindowVisible(window)){ShowWindow(window,SW_RESTORE);SetForegroundWindow(window);}return TRUE;}
 static void ShowPanel(){
  if(panel.hProcess&&WaitForSingleObject(panel.hProcess,0)==WAIT_TIMEOUT){EnumWindows(RaisePanel,panel.dwProcessId);return;}
@@ -55,10 +72,12 @@ extern "C" __declspec(dllexport) ZXError PluginMain(char* caller,char* selector,
   if(!state.menu||!state.menu->AddZString||!state.access||!state.access->AcquirePlugin){Log("missing-suite-function",0x5041524d);return 0x5041524d;}
   // The host owns ZString construction. Do not request the old UnicodeString
   // suite, instantiate Adobe C++ strings, or do any OCR/panel work at startup.
-  error=state.menu->AddZString(data->self,"ZiXing.Windows.Panel","Tool Palettes",(const void*)"字醒",2,&state.item);Log("register-menu",error);if(error)return error;
+  error=state.menu->AddZString(data->self,"ZiXing.Windows.Panel","Tool Palettes",(const void*)"ZiXing",3,&state.item);Log("register-menu",error);if(error)return error;
+  UpdateMenuLabel();
   error=state.access->AcquirePlugin(data->self,&state.resident);Log("pin-plugin",error);if(error)return error;
   Log("startup-ready",0);return 0;
  }
+ if(lstrcmpA(caller,"AI Menu")==0&&lstrcmpA(selector,"AI Update")==0){ZXMenuMessage* menu=(ZXMenuMessage*)message;if(menu->item==state.item&&state.item)UpdateMenuLabel();}
  if(lstrcmpA(caller,"AI Menu")==0&&lstrcmpA(selector,"AI Go")==0){ZXMenuMessage* menu=(ZXMenuMessage*)message;if(menu->item==state.item&&state.item)ShowPanel();}
  return 0;
 }
