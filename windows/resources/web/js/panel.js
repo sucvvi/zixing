@@ -101,7 +101,7 @@
   window.addEventListener('beforeunload',cleanup);
   if(!runtime){status('请从 Illustrator 的“窗口 → 字醒”打开原生插件。','error');return;}
   connected=true;busy=true;
-  host('ping').then(function(data){$('version').textContent='v2.1.0-beta1 · Windows 测试版 · Illustrator '+data.version;return loadFonts();})
+  host('ping').then(function(data){$('version').textContent='v2.1.0-beta2 · Windows 测试版 · Illustrator '+data.version;return loadFonts();})
     .then(function(){status('选中转曲文字后开始识别。');})
     .catch(function(e){connected=false;status(e.message,'error');}).then(function(){busy=false;buttons();});
 }());

@@ -36,12 +36,13 @@ resources=plugin.resources();exe=next(v for k,v in resources.items() if k[0]==10
 pipl=next(v for k,v in resources.items() if str(k[0]).upper()=='PIPL');assert pipl==(build/'plugin.pipl').read_bytes();assert b'wx86' in pipl and b'PluginMain' in pipl and b'mi32' not in pipl
 imports=plugin.imports();assert not any(x.lower() in ['libc++.dll','libc++-1.dll','libwinpthread-1.dll','msvcp140.dll','vcruntime140.dll'] for x in imports),imports
 payload=(build/'payload.zip').read_bytes();assert payload in exe
-manifest=json.loads((build/'build-manifest.json').read_text())
+manifest=json.loads((build/'build-manifest.json').read_text(encoding='utf-8'))
 assert hashlib.sha256(plugin.data).hexdigest()==manifest['aipSHA256']
 with zipfile.ZipFile(io.BytesIO(payload)) as z:
  assert z.testzip() is None
  for n,digest in manifest['assets'].items():assert hashlib.sha256(z.read(n)).hexdigest()==digest,n
  for lang in ['eng','chi_sim','chi_tra']:assert 'web/ocr/lang/'+lang+'.traineddata.gz' in z.namelist()
  assert not any('illustratorapi/' in n or '.DS_Store' in n or n.endswith('.swift') for n in z.namelist())
+assert not any(x.lower().startswith('api-ms-win-crt-') for x in imports),'Native bootstrap must not load UCRT DLLs'
 result={'ok':True,'format':'PE32+ x64 DLL','exports':plugin.exports(),'imports':imports,'embeddedPanel':len(exe),'embeddedAssets':len(manifest['assets']),'windowsIllustratorTested':False}
 (build/'package-verification.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))

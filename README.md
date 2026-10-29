@@ -35,6 +35,8 @@
 
 ## 下载
 
+**Windows 启动反馈：** beta1 已收到 Illustrator 启动时拒绝加载的反馈，暂不推荐安装。beta2 正在修订启动接口，并通过 [Windows 构建检查](https://github.com/Gerald-Charles/zixing/actions/workflows/windows-build.yml) 提供测试产物；真实 Illustrator 仍待复测。
+
 请从 [Releases](https://github.com/Gerald-Charles/zixing/releases) 下载对应系统的安装包，源码 ZIP 不能直接安装。
 
 | 版本 | 适用范围与验证状态 | 下载 |

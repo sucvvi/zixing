@@ -4,7 +4,7 @@ from pathlib import Path
 import gzip,hashlib,io,json,tarfile,urllib.request
 root=Path(__file__).resolve().parents[2]
 destination=root/'windows/resources/web/ocr'
-records=json.loads(Path(__file__).with_name('ocr-assets.json').read_text())
+records=json.loads(Path(__file__).with_name('ocr-assets.json').read_text(encoding='utf-8'))
 downloads={}
 for item in records:
     url=item['url']

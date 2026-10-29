@@ -12,3 +12,5 @@ __pycache__/
 *.dmg
 *.zip
 windows/resources/web/ocr/
+
+windows/deps/

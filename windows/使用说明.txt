@@ -1,8 +1,9 @@
-字醒 · Windows 原生测试版 2.1.0-beta1
+字醒 · Windows 原生测试版 2.1.0-beta2
 
 【先看这条】
-这是 Windows x64 测试包，已完成编译、包结构检查、算法与传输测试，并用打包的离线 OCR 资源进行了浏览器验证。
-目前没有 Windows 电脑，尚未在 Windows Illustrator 中验证能否加载及完成操作。请先在测试稿副本上试用，不要当作正式稳定版直接用于生产稿。
+这是 Windows x64 启动修订测试包。针对 beta1 启动即被 Illustrator 拒绝的反馈，简化菜单注册依赖并增加启动日志。
+包结构、算法和传输检查仍不等于 Windows Illustrator 实机通过。
+尚未在 Windows Illustrator 中验证能否加载及完成操作。请先在测试稿副本上试用，不要当作正式稳定版直接用于生产稿。
 
 【适用范围】
 兼容目标：Windows 10/11 64 位，Illustrator 2020–2026。

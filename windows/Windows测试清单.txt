@@ -1,4 +1,6 @@
-字醒 Windows 2.1.0-beta1 实机测试清单
+字醒 Windows 2.1.0-beta2 实机测试清单
+
+beta1 已有启动拒绝反馈；beta2 应先复测启动，并保留 startup.log。
 
 当前结论：下列 Windows Illustrator 项目全部待实测。编译成功不代表能在宿主中正常运行。
 

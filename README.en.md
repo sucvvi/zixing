@@ -35,6 +35,8 @@ Restored text can be edited and assigned another font. Select multiple editable 
 
 ## Downloads
 
+**Windows startup issue:** beta1 has a reported Illustrator startup rejection and is not currently recommended. beta2 simplifies startup registration; test artifacts are available through the [Windows build checks](https://github.com/Gerald-Charles/zixing/actions/workflows/windows-build.yml) after a successful run. Real Illustrator verification is still pending.
+
 Download the installer for your operating system from [Releases](https://github.com/Gerald-Charles/zixing/releases). The automatically generated source ZIP is not an installable plugin.
 
 | Release | Compatibility target and verification status | Download |
