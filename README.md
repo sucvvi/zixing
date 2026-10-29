@@ -35,14 +35,14 @@
 
 ## 下载
 
-**Windows 启动反馈：** beta1 已收到 Illustrator 启动时拒绝加载的反馈，暂不推荐安装。beta2 正在修订启动接口，并通过 [Windows 构建检查](https://github.com/Gerald-Charles/zixing/actions/workflows/windows-build.yml) 提供测试产物；真实 Illustrator 仍待复测。
+**Windows 启动反馈：** beta1 已收到 Illustrator 启动时拒绝加载的反馈，暂不推荐安装。beta2 已简化启动接口，并通过 [Windows 构建及加载检查](https://github.com/sucvvi/zixing/actions/runs/40814646149)。请从 [beta2 发布页](https://github.com/sucvvi/zixing/releases/tag/v2.1.0-beta2-windows) 下载复测；真实 Illustrator 仍待确认。
 
-请从 [Releases](https://github.com/Gerald-Charles/zixing/releases) 下载对应系统的安装包，源码 ZIP 不能直接安装。
+请从 [Releases](https://github.com/sucvvi/zixing/releases) 下载对应系统的安装包，源码 ZIP 不能直接安装。
 
 | 版本 | 适用范围与验证状态 | 下载 |
 | --- | --- | --- |
-| macOS 2.0.0 | macOS 13+，Universal arm64 / x86_64；已在 Apple Silicon、Illustrator 2026 30.8.2 实测识别、恢复与合并；其他机器和 Intel Mac 未实测 | [Mac 安装包](https://github.com/Gerald-Charles/zixing/releases/tag/v2.0.0-macos) |
-| Windows 2.1.0-beta1 | Windows 10/11 x64；以 Illustrator 2020–2026 为兼容目标；**尚未在 Windows Illustrator 实机验证** | [Windows 测试包](https://github.com/Gerald-Charles/zixing/releases/tag/v2.1.0-beta1-windows) |
+| macOS 2.0.0 | macOS 13+，Universal arm64 / x86_64；已在 Apple Silicon、Illustrator 2026 30.8.2 实测识别、恢复与合并；其他机器和 Intel Mac 未实测 | [Mac 安装包](https://github.com/sucvvi/zixing/releases/tag/v2.0.0-macos) |
+| Windows 2.1.0-beta2 | Windows 10/11 x64；以 Illustrator 2020–2026 为兼容目标；**尚未在 Windows Illustrator 实机验证** | [Windows 测试包](https://github.com/sucvvi/zixing/releases/tag/v2.1.0-beta2-windows) |
 
 Mac 包采用本地 ad-hoc 签名，尚未 Developer ID 签名或公证，下载后可能受 Gatekeeper 限制。Windows 包未商业签名，仍是供实机验证的测试版。不要为运行插件关闭安全软件；先在测试稿副本中使用。
 
@@ -76,7 +76,7 @@ Adobe SDK 需开发者自行从 Adobe Developer Console 获取并遵守其条款
 
 Mac：先运行 `bash tools/build.sh` 编译辅助程序，再运行 `bash aip/tools/build-aip.sh 'SDK 根目录'`。需要 Xcode 命令行工具和 Illustrator 2026 Mac SDK。详见 [Mac 开发说明](aip/README.md)。
 
-Windows：先执行 `python3 windows/tools/fetch-ocr-assets.py` 下载固定版本并校验哈希的 OCR 构建资源，再按 [Windows 开发说明](windows/README.md) 准备官方 SDK 与构建工具。发行包已内嵌 OCR 资源，使用时无需下载模型。
+Windows：先执行 `python3 windows/tools/fetch-ocr-assets.py` 下载固定版本并校验哈希的 OCR 构建资源，再按 [Windows 开发说明](windows/README.md) 准备 Windows 微软编译工具；官方 SDK 仅用于可选的接口布局核对。发行包已内嵌 OCR 资源，使用时无需下载模型。
 
 不依赖 Illustrator 的 JavaScript 检查：
 
@@ -88,6 +88,6 @@ Windows 仍需补齐真实宿主加载、字体枚举、恢复、合并与撤销
 
 ## 反馈
 
-欢迎在 [Issues](https://github.com/Gerald-Charles/zixing/issues) 提交问题，并附系统版本、Illustrator 完整版本、字醒版本、操作步骤和错误截图。请只提供可公开的测试稿，不要上传客户或其他敏感文件。
+欢迎在 [Issues](https://github.com/sucvvi/zixing/issues) 提交问题，并附系统版本、Illustrator 完整版本、字醒版本、操作步骤和错误截图。请只提供可公开的测试稿，不要上传客户或其他敏感文件。
 
 第三方依赖许可见 `windows/resources/licenses/`，发行包也保留相关许可说明。

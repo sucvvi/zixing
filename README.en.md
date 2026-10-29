@@ -35,14 +35,14 @@ Restored text can be edited and assigned another font. Select multiple editable 
 
 ## Downloads
 
-**Windows startup issue:** beta1 has a reported Illustrator startup rejection and is not currently recommended. beta2 simplifies startup registration; test artifacts are available through the [Windows build checks](https://github.com/Gerald-Charles/zixing/actions/workflows/windows-build.yml) after a successful run. Real Illustrator verification is still pending.
+**Windows startup issue:** beta1 has a reported Illustrator startup rejection and is not currently recommended. beta2 simplifies startup registration and has passed [Windows build and loader checks](https://github.com/sucvvi/zixing/actions/runs/40814646149). Download the [beta2 test release](https://github.com/sucvvi/zixing/releases/tag/v2.1.0-beta2-windows) to retest. Real Illustrator verification is still pending.
 
-Download the installer for your operating system from [Releases](https://github.com/Gerald-Charles/zixing/releases). The automatically generated source ZIP is not an installable plugin.
+Download the installer for your operating system from [Releases](https://github.com/sucvvi/zixing/releases). The automatically generated source ZIP is not an installable plugin.
 
 | Release | Compatibility target and verification status | Download |
 | --- | --- | --- |
-| macOS 2.0.0 | macOS 13+, Universal arm64 / x86_64. Recognition, recovery, and merging tested on Apple Silicon with Illustrator 2026 30.8.2. Other machines and Intel Macs have not been tested. | [Mac package](https://github.com/Gerald-Charles/zixing/releases/tag/v2.0.0-macos) |
-| Windows 2.1.0-beta1 | Windows 10/11 x64, targeting Illustrator 2020–2026. **Not yet tested in Windows Illustrator.** | [Windows test package](https://github.com/Gerald-Charles/zixing/releases/tag/v2.1.0-beta1-windows) |
+| macOS 2.0.0 | macOS 13+, Universal arm64 / x86_64. Recognition, recovery, and merging tested on Apple Silicon with Illustrator 2026 30.8.2. Other machines and Intel Macs have not been tested. | [Mac package](https://github.com/sucvvi/zixing/releases/tag/v2.0.0-macos) |
+| Windows 2.1.0-beta2 | Windows 10/11 x64, targeting Illustrator 2020–2026. **Not yet tested in Windows Illustrator.** | [Windows test package](https://github.com/sucvvi/zixing/releases/tag/v2.1.0-beta2-windows) |
 
 The Mac package has a local ad-hoc signature and has not been Developer ID signed or notarized; Gatekeeper may restrict it after download. The Windows package has no commercial digital signature and remains a test build. Keep your security protections enabled and try the plugin on a disposable document copy first.
 
@@ -86,7 +86,7 @@ Obtain the Adobe SDK separately from Adobe Developer Console and follow its term
 
 **Mac:** run `bash tools/build.sh` to compile the helpers, then `bash aip/tools/build-aip.sh 'SDK root'`. Xcode command-line tools and the Illustrator 2026 Mac SDK are required. See the [Mac development notes](aip/README.md) (Chinese).
 
-**Windows:** run `python3 windows/tools/fetch-ocr-assets.py` to download pinned OCR build assets and verify their hashes. Then prepare the official SDK and build tools described in the [Windows development notes](windows/README.md) (Chinese). Release packages already embed the OCR assets and do not need to download models during use.
+**Windows:** run `python3 windows/tools/fetch-ocr-assets.py` to download pinned OCR build assets and verify their hashes. Then prepare the Microsoft Windows build tools described in the [Windows development notes](windows/README.md) (Chinese). Release packages already embed the OCR assets and do not need to download models during use.
 
 JavaScript checks that do not require Illustrator:
 
@@ -98,6 +98,6 @@ Windows still needs real-machine verification of plugin loading, font enumeratio
 
 ## Feedback
 
-Open an [Issue](https://github.com/Gerald-Charles/zixing/issues) with your operating system, full Illustrator version, ZiXing version, reproduction steps, and an error screenshot. Only share sample files that are safe to publish; do not upload client artwork or sensitive files.
+Open an [Issue](https://github.com/sucvvi/zixing/issues) with your operating system, full Illustrator version, ZiXing version, reproduction steps, and an error screenshot. Only share sample files that are safe to publish; do not upload client artwork or sensitive files.
 
 Third-party notices are in `windows/resources/licenses/` and are also included in the relevant release package.
